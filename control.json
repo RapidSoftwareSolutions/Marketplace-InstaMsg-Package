@@ -1,0 +1,299 @@
+{
+    "createTenant": {
+        "url": "https://api.instamsg.io/api/v1/tenants",
+        "method": "POST",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|name": "$name",
+            "String|description": "description",
+            "Number|maxClients": "$max_clients",
+            "Number|maxMessages": "$max_messages"
+        }
+    },
+    "getTenants": {
+        "url": "https://api.instamsg.io/api/v1/tenants",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|sortBy": "sort_by",
+            "String|sortOrder": "sort_order",
+            "Boolean|active": "active"
+        }
+    },
+    "getSingleTenant": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:id",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|id": "$!id"
+        }
+    },
+    "updateTenant": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:id",
+        "method": "PUT",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|id": "$!id",
+            "String|name": "name",
+            "String|description": "description",
+            "Number|maxClients": "max_clients",
+            "Number|maxMessages": "max_messages"
+        }
+    },
+    "deleteTenant": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:id",
+        "method": "DELETE",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|id": "$!id"
+        }
+    },
+    "createClient": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients",
+        "method": "POST",
+        "hasTree": true,
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|type": "$type",
+            "String|name": "$name",
+            "String|description": "description",
+            "Array|subTopics": "sub_topics",
+            "Array|pubTopics": "pub_topics",
+            "Boolean|secureCertEnabled": "secure_cert_enabled",
+            "String|provisioningId": "$provisioning_params.provisioning_id",
+            "String|provisioningKey": "provisioning_params.provisioning_key",
+            "String|gsmMsisdn": "provisioning_params.gsm_msisdn",
+            "String|gsmApn": "provisioning_params.gsm_apn",
+            "String|gsmUsername": "provisioning_params.gsm_username",
+            "String|gsmPassword": "provisioning_params.gsm_password",
+            "String|gsmSimPin": "provisioning_params.gsm_sim_pin",
+            "String|gsmSendSms": "provisioning_params.gsm_send_sms",
+            "String|gsmIsdCode": "provisioning_params.gsm_isd_code"
+        }
+    },
+    "getClients": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|sortBy": "sort_by",
+            "String|sortOrder": "sort_order",
+            "String|type": "type",
+            "Number|secure": "secure",
+            "String|state": "state"
+        }
+    },
+    "getSingleClient": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId"
+        }
+    },
+    "updateClient": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId",
+        "method": "PUT",
+        "hasTree": true,
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId",
+            "String|type": "type",
+            "String|name": "name",
+            "String|description": "description",
+            "Array|subTopics": "sub_topics",
+            "Array|pubTopics": "pub_topics",
+            "Boolean|secureCertEnabled": "secure_cert_enabled",
+            "String|provisioningId": "provisioning_params.provisioning_id",
+            "String|provisioningKey": "provisioning_params.provisioning_key",
+            "String|gsmMsisdn": "provisioning_params.gsm_msisdn",
+            "String|gsmApn": "provisioning_params.gsm_apn",
+            "String|gsmUsername": "provisioning_params.gsm_username",
+            "String|gsmPassword": "provisioning_params.gsm_password",
+            "String|gsmSimPin": "provisioning_params.gsm_sim_pin",
+            "String|gsmSendSms": "provisioning_params.gsm_send_sms",
+            "String|gsmIsdCode": "provisioning_params.gsm_isd_code"
+        }
+    },
+    "deleteClient": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId",
+        "method": "DELETE",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId"
+        }
+    },
+    "getClientAuthToken": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/auth_token",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId"
+        }
+    },
+    "getClientInfo": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/info",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId"
+        }
+    },
+    "getClientNetworkLogs": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/network_logs",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId",
+            "String|sortBy": "sort_by",
+            "String|sortOrder": "sort_order",
+            "Number|start": "start",
+            "Number|end": "end",
+            "String|macId": "mac_id",
+            "String|imei": "imei",
+            "String|msisdn": "msisdn",
+            "String|iccid": "iccid"
+        }
+    },
+    "getClientSessions": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/sessions",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId",
+            "String|sortBy": "sort_by",
+            "String|sortOrder": "sort_order",
+            "Number|start": "start",
+            "Number|end": "end"
+        }
+    },
+    "getClientMetrics": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/metrics",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId",
+            "String|interval": "interval"
+        }
+    },
+    "getClientLogs": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/logs",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId",
+            "Number|start": "start",
+            "String|end": "end",
+            "String|level": "level",
+            "String|creator": "creator"
+        }
+    },
+    "updateClientAuthToken": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/reset_auth_token",
+        "method": "PUT",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId"
+        }
+    },
+    "updateClientCertificate": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/reset_certificate",
+        "method": "PUT",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId"
+        }
+    },
+    "getFiles": {
+        "url": "https://api.instamsg.io/api/v1/clients/:clientId/files",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$tenantId",
+            "String|clientId": "$!clientId"
+        }
+    },
+    "downloadFile": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/files/:filename",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId",
+            "String|filename": "$!filename"
+        }
+    },
+    "deleteFile": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/files/:filename",
+        "method": "DELETE",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId",
+            "String|filename": "$!filename"
+        }
+    },
+    "getClientConfig": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/config",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId"
+        }
+    },
+    "updateClientConfig": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/config",
+        "method": "PUT",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId",
+            "JSON|config": "$config"
+        }
+    },
+    "deleteClientConfig": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/config",
+        "method": "DELETE",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId"
+        }
+    },
+    "getMessages": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/messages",
+        "method": "GET",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId",
+            "Number|start": "start",
+            "Number|end": "end",
+            "String|type": "type"
+        }
+    },
+    "releaseMessage": {
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/messages/:messageId/release",
+        "method": "PUT",
+        "args": {
+            "String|accessToken": "$!accessToken",
+            "String|tenantId": "$!tenantId",
+            "String|clientId": "$!clientId",
+            "String|messageId": "$!messageId"
+        }
+    }
+}

@@ -1,0 +1,1529 @@
+{
+  "package": "InstaMsg",
+  "tagline": "InstaMsg API Package",
+  "description": "InstaMsg",
+  "image": "http://logo.clearbit.com/sensegrow.com",
+  "keywords": [
+    "API"
+  ],
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-Basecamp3-Package",
+  "accounts": {
+    "domain": "platform.instamsg.io",
+    "credentials": [
+      "clientKey",
+      "clientSecret"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "getAccessToken",
+      "description": "Requests an access token.",
+      "args": [
+        {
+          "name": "clientKey",
+          "type": "credentials",
+          "info": "InstaMsg Client Key.",
+          "required": true
+        },
+        {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "InstaMsg Client Secret.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "invalidateAccessToken",
+      "description": "Invalidating an access token.",
+      "args": [
+        {
+          "name": "clientKey",
+          "type": "credentials",
+          "info": "InstaMsg Client Key.",
+          "required": true
+        },
+        {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "InstaMsg Client Secret.",
+          "required": true
+        },
+        {
+          "name": "token",
+          "type": "String",
+          "info": "Access Token to invalidate.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "createTenant",
+      "description": "Creates a Single Tenant.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the tenant example `Company 1`",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "A short description of your tenant.",
+          "required": false
+        },
+        {
+          "name": "maxClients",
+          "type": "Number",
+          "info": "Max no of clients, which can be created in this Tenant. This can be used effectively to ration clients for a tenant.",
+          "required": true
+        },
+        {
+          "name": "maxMessages",
+          "type": "Number",
+          "info": "Max no of messages, which can be send by all clients of this tenant. This can be used to prevent abuse of messages by a tenant. Example from your purchase 1 million messages and you want to allot 10000 messages to this Tenant.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getTenants",
+      "description": "List all Tenants",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "Possible values are `name`, `created_at`, `updated_at`",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "info": "Possible values are `asc` or `desc`. Defaults to `asc`",
+          "required": false
+        },
+        {
+          "name": "active",
+          "type": "Boolean",
+          "info": "Possible values: 0, 1. Will list active or inactive tenants. If the filter is omitted it will return both active and inactive tenants.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getSingleTenant",
+      "description": "View a Tenant",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "updateTenant",
+      "description": "Update a Tenant",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the tenant example `Company 1`",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "A short description of your tenant.",
+          "required": false
+        },
+        {
+          "name": "maxClients",
+          "type": "Number",
+          "info": "Max no of clients, which can be created in this Tenant. This can be used effectively to ration clients for a tenant.",
+          "required": false
+        },
+        {
+          "name": "maxMessages",
+          "type": "Number",
+          "info": "Max no of messages, which can be send by all clients of this tenant. This can be used to prevent abuse of messages by a tenant. Example from your purchase 1 million messages and you want to allot 10000 messages to this Tenant.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "deleteTenant",
+      "description": "Delete a Tenant",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Tenant ID to delete.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "createClient",
+      "description": "Create a Client",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "info": "The Client type. Takes any of the two values - `device` or `user`. `device` represents a IoT device client, and `user` represents a user client.",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the tenant. For example, `Company 1`",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "A short description of the Client.",
+          "required": false
+        },
+        {
+          "name": "subTopics",
+          "type": "Array",
+          "info": "Array of sub topics to which the Client can subscribe.",
+          "required": false
+        },
+        {
+          "name": "pubTopics",
+          "type": "Array",
+          "info": "Array of sub topics to which the Client can publish messages to.",
+          "required": false
+        },
+        {
+          "name": "secureCertEnabled",
+          "type": "Boolean",
+          "info": "Will client-certificate-authentication take place when client connects to server. Can take values `true` or `false`.",
+          "required": false
+        },
+        {
+          "name": "provisioningId",
+          "type": "String",
+          "info": "Usually IMEI-Number for GPRS devices; MAC-ID for LAN and Wifi devices. But this can be any globally unique alpha-numeric string. For example, the device's UUID/Serial-Number.",
+          "required": true
+        },
+        {
+          "name": "provisioningKey",
+          "type": "String",
+          "info": "An alphanumeric (0-9 and A-Z) key of length greater than 5 and less than 13. The key is case sensitive, therefore `KEY01` and `key01` are two different keys.",
+          "required": false
+        },
+        {
+          "name": "gsmMsisdn",
+          "type": "String",
+          "info": "The mobile phone number of the SIM that is used in the device, entered by the user in your app during provisioning process. Please note that here just the mobile-number should be entered, without any country-code or anything.",
+          "required": false
+        },
+        {
+          "name": "gsmApn",
+          "type": "String",
+          "info": "This is the Access Point Name (APN) of the mobile network.",
+          "required": false
+        },
+        {
+          "name": "gsmUsername",
+          "type": "String",
+          "info": "The user name for your APN.",
+          "required": false
+        },
+        {
+          "name": "gsmPassword",
+          "type": "String",
+          "info": "The password for your APN.",
+          "required": false
+        },
+        {
+          "name": "gsmSimPin",
+          "type": "String",
+          "info": "The PIN for your SIM.",
+          "required": false
+        },
+        {
+          "name": "gsmSendSms",
+          "type": "String",
+          "info": "If this field is `1`, the sms is sent to the GSM-device with the provisioning parameters.",
+          "required": false
+        },
+        {
+          "name": "gsmIsdCode",
+          "type": "String",
+          "info": "Country-Code. For example, for India the code would be `+91`",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getClients",
+      "description": "List all Clients",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "Possible values are `name`, `created_at`, `updated_at`",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "info": "Possible values are `asc` or `desc`. Defaults to `asc`",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "info": "Will list client of type `user` or `device`. If the filter is omitted it will return both type of clients.",
+          "required": false
+        },
+        {
+          "name": "secure",
+          "type": "Number",
+          "info": "Possible values: `0`, `1`. Will list secure or unsecure clients. If the filter is omitted it will return both secure and insecure clients",
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "String",
+          "info": "Possible values: `all`, `online`, `offline`, `blocked`, `provisioned`, `unprovisioned`.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getSingleClient",
+      "description": "",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "updateClient",
+      "description": "Update a Client",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "info": "The Client type. Takes any of the two values - `device` or `user`. `device` represents a IoT device client, and `user` represents a user client.",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "Name of the tenant. For example, `Company 1`",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "info": "A short description of the Client.",
+          "required": false
+        },
+        {
+          "name": "subTopics",
+          "type": "Array",
+          "info": "Array of sub topics to which the Client can subscribe.",
+          "required": false
+        },
+        {
+          "name": "pubTopics",
+          "type": "Array",
+          "info": "Array of sub topics to which the Client can publish messages to.",
+          "required": false
+        },
+        {
+          "name": "secureCertEnabled",
+          "type": "Boolean",
+          "info": "Will client-certificate-authentication take place when client connects to server. Can take values `true` or `false`.",
+          "required": false
+        },
+        {
+          "name": "provisioningId",
+          "type": "String",
+          "info": "Usually IMEI-Number for GPRS devices; MAC-ID for LAN and Wifi devices. But this can be any globally unique alpha-numeric string. For example, the device's UUID/Serial-Number.",
+          "required": false
+        },
+        {
+          "name": "provisioningKey",
+          "type": "String",
+          "info": "An alphanumeric (0-9 and A-Z) key of length greater than 5 and less than 13. The key is case sensitive, therefore `KEY01` and `key01` are two different keys.",
+          "required": false
+        },
+        {
+          "name": "gsmMsisdn",
+          "type": "String",
+          "info": "The mobile phone number of the SIM that is used in the device, entered by the user in your app during provisioning process. Please note that here just the mobile-number should be entered, without any country-code or anything.",
+          "required": false
+        },
+        {
+          "name": "gsmApn",
+          "type": "String",
+          "info": "This is the Access Point Name (APN) of the mobile network.",
+          "required": false
+        },
+        {
+          "name": "gsmUsername",
+          "type": "String",
+          "info": "The user name for your APN.",
+          "required": false
+        },
+        {
+          "name": "gsmPassword",
+          "type": "String",
+          "info": "The password for your APN.",
+          "required": false
+        },
+        {
+          "name": "gsmSimPin",
+          "type": "String",
+          "info": "The PIN for your SIM.",
+          "required": false
+        },
+        {
+          "name": "gsmSendSms",
+          "type": "String",
+          "info": "If this field is `1`, the sms is sent to the GSM-device with the provisioning parameters.",
+          "required": false
+        },
+        {
+          "name": "gsmIsdCode",
+          "type": "String",
+          "info": "Country-Code. For example, for India the code would be `+91`",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "deleteClient",
+      "description": "Delete a client",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getClientAuthToken",
+      "description": "Get Client Auth Token. You can get the auth token of Clients of type `user`.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getClientInfo",
+      "description": "List Client Info",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getClientNetworkLogs",
+      "description": "List Client Info",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "Possible values are `time`",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "info": "Possible values are `asc` or `desc`. Defaults to `asc`",
+          "required": false
+        },
+        {
+          "name": "start",
+          "type": "Number",
+          "info": "The start date time (in unix-time in milliseconds)",
+          "required": false
+        },
+        {
+          "name": "end",
+          "type": "Number",
+          "info": "The end date time (in unix-time in milliseconds)",
+          "required": false
+        },
+        {
+          "name": "macId",
+          "type": "String",
+          "info": "Hexified-MAC-Id of the network interface.",
+          "required": false
+        },
+        {
+          "name": "imei",
+          "type": "String",
+          "info": "The imei of the network interface.",
+          "required": false
+        },
+        {
+          "name": "msisdn",
+          "type": "String",
+          "info": "The mobile phone number if the device has multiple sim cards.",
+          "required": false
+        },
+        {
+          "name": "iccid",
+          "type": "String",
+          "info": "The sim number if the device has multiple sim cards.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getClientSessions",
+      "description": "You can get the client session details using the Client Sessions API.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "Possible values are `connect_time`, `disconnect_time`",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "info": "Possible values are `asc` or `desc`. Defaults to `asc`",
+          "required": false
+        },
+        {
+          "name": "start",
+          "type": "Number",
+          "info": "The start date time, (in unix-time in milliseconds)",
+          "required": false
+        },
+        {
+          "name": "end",
+          "type": "Number",
+          "info": "The end date time, (in unix-time in milliseconds)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getClientMetrics",
+      "description": "List Client Metrics",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "interval",
+          "type": "String",
+          "info": "The interval over which the metrics should be aggregated. Valid value are `day` and `month`. `day` aggregates the metrics over last 24 hours while month over the last 30 days. The default is last 24 hours.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getClientLogs",
+      "description": "Client Logs are important to if you want to know what is happening at the client end (e.x. the client embedded in the IoT device) and the InstaMsg server end. You can use these logs to troubleshoot your clients.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "start",
+          "type": "Number",
+          "info": "The start date time (in unix-time in milliseconds)",
+          "required": false
+        },
+        {
+          "name": "end",
+          "type": "String",
+          "info": "The end date time (in unix-time in milliseconds)",
+          "required": false
+        },
+        {
+          "name": "level",
+          "type": "String",
+          "info": "Level of logs `DEBUG` , `INFO`, `WARN`, `ERROR`, `FATAL`.",
+          "required": false
+        },
+        {
+          "name": "creator",
+          "type": "String",
+          "info": "The creator of the logs. It can have two valid values `InstaMsg` and `client`.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "updateClientAuthToken",
+      "description": "Client Update Auth-Token",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "updateClientCertificate",
+      "description": "Client Update certificate",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getFiles",
+      "description": "List all client's Files",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "downloadFile",
+      "description": "Download a File",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "filename",
+          "type": "String",
+          "info": "File Name to download.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "uploadFile",
+      "description": "Uploads a file to a Client. This has a maximum file size limit of 1 MB and `text/plain` content type.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "filename",
+          "type": "String",
+          "info": "Name of file.",
+          "required": true
+        },
+        {
+          "name": "file",
+          "type": "File",
+          "info": "File to upload.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "deleteFile",
+      "description": "Delete a File",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant id.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "filename",
+          "type": "String",
+          "info": "File Name to delete.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getClientConfig",
+      "description": "View Client Config",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant id.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "updateClientConfig",
+      "description": "Update Client-Config",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant id.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "config",
+          "type": "JSON",
+          "info": "This is a Json Object of the Config key and values. Each config is represented as a Key and Value in the Json. The JSON is defined by Client side application and InstaMsg only assumes it to be a valid Json.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "deleteClientConfig",
+      "description": "Delete Client-Config",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant id.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "publishMessage",
+      "description": "Publish A Message",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant id.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "The Message ID is a 16-bit unsigned integer that must be unique among the set of `in flight` messages in a particular direction of communication with a client. On your server side code you should maintain an map of client id, message id and reply handler or callback. When you receive a reply for a message. Set it to `null` for QOS 0 messages.",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "info": "The message type. Values can be `pub`, `p2p`. To publish a message set it to `pub`.",
+          "required": true
+        },
+        {
+          "name": "topic",
+          "type": "String",
+          "info": "Topic string can be any valid UTF-8 string of length limited to 64k. Topic string are case sensitive. So `TOPIC` and `topic` are two different topic. ",
+          "required": true
+        },
+        {
+          "name": "payload",
+          "type": "String",
+          "info": "This is a UTF-8 encoded string. If your message contains characters not represented in UTF-8 encode your message in base64 or hex.",
+          "required": true
+        },
+        {
+          "name": "qos",
+          "type": "Number",
+          "info": "This is the Quality of Service (QOS) level for message delivery. Valid values are: `1`: AT MOST ONCE; `2`: AT LEAST ONCE; `3`: EXACTLY ONCE",
+          "required": true
+        },
+        {
+          "name": "duplicate",
+          "type": "Boolean",
+          "info": "If you are re-sending this message set this to False i.e. 0.",
+          "required": false
+        },
+        {
+          "name": "save",
+          "type": "Boolean",
+          "info": "If you want the message to be stored on InstaMsg cloud.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "sendMessage",
+      "description": "This is the point to point messaging pattern. In this case the message is sent to one Client only and not published to a topic. You can send a message using the following API.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant id.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "The Message ID is a 16-bit unsigned integer that must be unique among the set of `in flight` messages in a particular direction of communication with a client. On your server side code you should maintain an map of client id, message id and reply handler or callback. When you receive a reply for a message. Set it to `null` for QOS 0 messages.",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "info": "The message type. Values can be `pub`, `p2p`. To publish a message set it to `pub`.",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "info": "When you are replying to a point to point message you can set the status of processing the messaging. Status 0 means that an error was encountered while processing the message 1 means that the message was processed successfully. You can inform the client sending the message of a failure this way. You can set the error message and code in the message payload.",
+          "required": true
+        },
+        {
+          "name": "payload",
+          "type": "String",
+          "info": "This is a UTF-8 encoded string. If your message contains characters not represented in UTF-8 encode your message in base64 or hex.If you are replying with an error status the payload would be a json with an `error_code` and `error_msg` key.",
+          "required": false
+        },
+        {
+          "name": "qos",
+          "type": "Number",
+          "info": "This is the Quality of Service (QOS) level for message delivery. Valid values are: `1`: AT MOST ONCE; `2`: AT LEAST ONCE;",
+          "required": false
+        },
+        {
+          "name": "duplicate",
+          "type": "Boolean",
+          "info": "If you are re-sending this message set this to False i.e. 0.",
+          "required": false
+        },
+        {
+          "name": "save",
+          "type": "Boolean",
+          "info": "If you want the message to be stored on InstaMsg cloud.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getMessages",
+      "description": "You can list all messages exchanged by a client.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "start",
+          "type": "Number",
+          "info": "The start date time.",
+          "required": false
+        },
+        {
+          "name": "end",
+          "type": "Number",
+          "info": "The end date time.",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "info": "The message type. Takes any of the two values `pub` or `p2p`.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "releaseMessage",
+      "description": "Request InstaMsg to release (publish to subscribers) the message.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "OAuth2 Access Token from `getAccessToken` method.",
+          "required": true
+        },
+        {
+          "name": "tenantId",
+          "type": "String",
+          "info": "Tenant ID.",
+          "required": true
+        },
+        {
+          "name": "clientId",
+          "type": "String",
+          "info": "Client ID.",
+          "required": true
+        },
+        {
+          "name": "messageId",
+          "type": "String",
+          "info": "Message ID.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    }
+  ]
+}
