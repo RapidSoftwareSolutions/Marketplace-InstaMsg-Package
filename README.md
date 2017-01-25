@@ -1,5 +1,5 @@
 # InstaMsg Package
-InstaMsg
+InstaMsg is a real time messaging and connectivity platform for Internet of Things.
 * Credentials: clientKey, clientSecret
 
 ## How to get credentials: 

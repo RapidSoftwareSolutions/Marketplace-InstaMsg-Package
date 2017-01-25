@@ -1,7 +1,7 @@
 {
   "package": "InstaMsg",
   "tagline": "InstaMsg API Package",
-  "description": "InstaMsg",
+  "description": "InstaMsg is a real time messaging and connectivity platform for Internet of Things.",
   "image": "http://logo.clearbit.com/sensegrow.com",
   "keywords": [
     "API"
