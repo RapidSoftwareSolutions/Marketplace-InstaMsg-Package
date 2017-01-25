@@ -299,6 +299,16 @@ Update Client-Config
 | clientId       | String| Client ID.
 | config         | JSON  | This is a Json Object of the Config key and values. Each config is represented as a Key and Value in the Json. The JSON is defined by Client side application and InstaMsg only assumes it to be a valid Json.
 
+#### `config` field example: 
+```json
+"config": {
+    "MEDIA_STREAMING_ENABLED": 1, 
+    "PING_REQ_INTERVAL": 180, 
+    "COMPULSORY_SOCKET_READ_AFTER_MQTT_PUBLISH_INTERVAL": 3, 
+    "BUSINESS_LOGIC_INTERVAL": 420
+}
+```
+
 ## InstaMsg.deleteClientConfig
 Delete Client-Config
 
