@@ -3,9 +3,9 @@ InstaMsg is a real time messaging and connectivity platform for Internet of Thin
 * Credentials: clientKey, clientSecret
 
 ## How to get credentials: 
-[Log onto your InstaMsg](https://platform.instamsg.io) account.
-Create your App
-Obtain a client key and client secret
+1. [Log onto your InstaMsg](https://platform.instamsg.io) account.
+2. Create your App
+3. Obtain a client key and client secret
 
 ## InstaMsg.getAccessToken
 Requests an access token.
@@ -361,14 +361,3 @@ You can list all messages exchanged by a client.
 | start          | Number| The start date time.
 | end            | Number| The end date time.
 | type           | String| The message type. Takes any of the two values `pub` or `p2p`.
-
-## InstaMsg.releaseMessage
-Request InstaMsg to release (publish to subscribers) the message.
-
-| Field          | Type  | Description
-|----------------|-------|----------
-| accessToken    | String| OAuth2 Access Token from `getAccessToken` method.
-| tenantId       | String| Tenant ID.
-| clientId       | String| Client ID.
-| messageId      | String| Message ID.
-

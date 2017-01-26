@@ -46,10 +46,12 @@ module.exports = (req, res) => {
             save
         })  
     }, (err, response, reslut) => {
-        if(!err && (/20.*/).test(response.statusCode))  
-            defered.resolve(lib.safeParse(reslut));
-        else 
+        if(!err && (/20.*/).test(response.statusCode)) {
+            let messageId = response.headers.location.split('messages/')[1];
+            defered.resolve(lib.safeParse({messageId}));
+        } else { 
             defered.reject(lib.safeParse(err || reslut || response.statusCode));
+        }
     });
 
     return defered.promise;    
