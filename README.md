@@ -84,7 +84,7 @@ Create a Client
 | name             | String | Name of the tenant. For example, `Company 1`
 | description      | String | A short description of the Client.
 | subTopics        | Array  | Array of sub topics to which the Client can subscribe.
-| pubTopics        | Array  | Array of sub topics to which the Client can publish messages to.
+| pubTopics        | Array  | Array of pub topics to which the Client can publish messages to.
 | secureCertEnabled| Boolean| Will client-certificate-authentication take place when client connects to server. Can take values `true` or `false`.
 | provisioningId   | String | Usually IMEI-Number for GPRS devices; MAC-ID for LAN and Wifi devices. But this can be any globally unique alpha-numeric string. For example, the device's UUID/Serial-Number.
 | provisioningKey  | String | An alphanumeric (0-9 and A-Z) key of length greater than 5 and less than 13. The key is case sensitive, therefore `KEY01` and `key01` are two different keys.
@@ -258,17 +258,6 @@ Download a File
 | tenantId       | String| Tenant ID.
 | clientId       | String| Client ID.
 | filename       | String| File Name to download.
-
-## InstaMsg.uploadFile
-Uploads a file to a Client. This has a maximum file size limit of 1 MB and `text/plain` content type.
-
-| Field          | Type  | Description
-|----------------|-------|----------
-| accessToken    | String| OAuth2 Access Token from `getAccessToken` method.
-| tenantId       | String| Tenant ID.
-| clientId       | String| Client ID.
-| filename       | String| Name of file.
-| file           | File  | File to upload.
 
 ## InstaMsg.deleteFile
 Delete a File

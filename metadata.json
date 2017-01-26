@@ -314,7 +314,7 @@
         {
           "name": "pubTopics",
           "type": "Array",
-          "info": "Array of sub topics to which the Client can publish messages to.",
+          "info": "Array of pub topics to which the Client can publish messages to.",
           "required": false
         },
         {
@@ -1073,52 +1073,6 @@
           "name": "filename",
           "type": "String",
           "info": "File Name to download.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "success",
-          "info": "Success"
-        },
-        {
-          "name": "error",
-          "info": "Error"
-        }
-      ]
-    },
-    {
-      "name": "uploadFile",
-      "description": "Uploads a file to a Client. This has a maximum file size limit of 1 MB and `text/plain` content type.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "OAuth2 Access Token from `getAccessToken` method.",
-          "required": true
-        },
-        {
-          "name": "tenantId",
-          "type": "String",
-          "info": "Tenant ID.",
-          "required": true
-        },
-        {
-          "name": "clientId",
-          "type": "String",
-          "info": "Client ID.",
-          "required": true
-        },
-        {
-          "name": "filename",
-          "type": "String",
-          "info": "Name of file.",
-          "required": true
-        },
-        {
-          "name": "file",
-          "type": "File",
-          "info": "File to upload.",
           "required": true
         }
       ],
