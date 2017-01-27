@@ -7,6 +7,18 @@ InstaMsg is a real time messaging and connectivity platform for Internet of Thin
 2. Create your App
 3. Obtain a client key and client secret
 
+## Warn
+To be able to use **publishMessage** block, you should:
+1. When you create client with **createClient** block, provide value to `pubTopics` field. For example: 
+```json
+"pubTopics": ["pub1"]
+```
+2. When you call **publishMessage** block, provide `topic` field with value which you set in **createClient** block.
+Example: 
+```json
+"topic": "pub1"
+```
+
 ## InstaMsg.getAccessToken
 Requests an access token.
 
@@ -94,6 +106,20 @@ Create a Client
 | gsmSendSms       | String | If this field is `1`, the sms is sent to the GSM-device with the provisioning parameters.
 | gsmIsdCode       | String | Country-Code. For example, for India the code would be `+91`
 
+#### `subTopics` field example: 
+```json
+{
+	"subTopics": ["sub1", "sub2"]	
+}
+```
+
+#### `pubTopics` field example: 
+```json
+{
+	"pubTopics": ["pub1", "pub2"]	
+}
+```
+
 ## InstaMsg.getClients
 List all Clients
 
@@ -106,7 +132,7 @@ List all Clients
 | state          | String| Possible values: `all`, `online`, `offline`, `blocked`, `provisioned`, `unprovisioned`.
 
 ## InstaMsg.getSingleClient
-Method description
+View a Client
 
 | Field          | Type  | Description
 |----------------|-------|----------
@@ -138,6 +164,20 @@ Update a Client
 | gsmSendSms       | String | If this field is `1`, the sms is sent to the GSM-device with the provisioning parameters.
 | gsmIsdCode       | String | Country-Code. For example, for India the code would be `+91`
 
+#### `subTopics` field example: 
+```json
+{
+	"subTopics": ["sub1", "sub2"]	
+}
+```
+
+#### `pubTopics` field example: 
+```json
+{
+	"pubTopics": ["pub1", "pub2"]	
+}
+```
+
 ## InstaMsg.deleteClient
 Delete a client
 
@@ -166,7 +206,7 @@ List Client Info
 | clientId       | String| Client ID.
 
 ## InstaMsg.getClientNetworkLogs
-List Client Info
+InstaMsg Client libraries also push network information to the InstaMsg server. Network logs are very important to troubleshoot IoT device sites that have a poor network.
 
 | Field          | Type  | Description
 |----------------|-------|----------
@@ -312,22 +352,6 @@ Publish A Message
 | topic          | String | Topic string can be any valid UTF-8 string of length limited to 64k. Topic string are case sensitive. So `TOPIC` and `topic` are two different topic. 
 | payload        | String | This is a UTF-8 encoded string. If your message contains characters not represented in UTF-8 encode your message in base64 or hex.
 | qos            | Number | This is the Quality of Service (QOS) level for message delivery. Valid values are: `1`: AT MOST ONCE; `2`: AT LEAST ONCE; `3`: EXACTLY ONCE
-| duplicate      | Boolean| If you are re-sending this message set this to False i.e. 0.
-| save           | Boolean| If you want the message to be stored on InstaMsg cloud.
-
-## InstaMsg.sendMessage
-This is the point to point messaging pattern. In this case the message is sent to one Client only and not published to a topic. You can send a message using the following API.
-
-| Field          | Type   | Description
-|----------------|--------|----------
-| accessToken    | String | OAuth2 Access Token from `getAccessToken` method.
-| tenantId       | String | Tenant id.
-| clientId       | String | Client ID.
-| id             | String | The Message ID is a 16-bit unsigned integer that must be unique among the set of `in flight` messages in a particular direction of communication with a client. On your server side code you should maintain an map of client id, message id and reply handler or callback. When you receive a reply for a message. Set it to `null` for QOS 0 messages.
-| type           | String | The message type. Values can be `pub`, `p2p`. To publish a message set it to `pub`.
-| status         | String | When you are replying to a point to point message you can set the status of processing the messaging. Status 0 means that an error was encountered while processing the message 1 means that the message was processed successfully. You can inform the client sending the message of a failure this way. You can set the error message and code in the message payload.
-| payload        | String | This is a UTF-8 encoded string. If your message contains characters not represented in UTF-8 encode your message in base64 or hex.If you are replying with an error status the payload would be a json with an `error_code` and `error_msg` key.
-| qos            | Number | This is the Quality of Service (QOS) level for message delivery. Valid values are: `1`: AT MOST ONCE; `2`: AT LEAST ONCE;
 | duplicate      | Boolean| If you are re-sending this message set this to False i.e. 0.
 | save           | Boolean| If you want the message to be stored on InstaMsg cloud.
 

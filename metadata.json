@@ -407,7 +407,7 @@
     },
     {
       "name": "getSingleClient",
-      "description": "",
+      "description": "View a Client",
       "args": [
         {
           "name": "accessToken",
@@ -667,7 +667,7 @@
     },
     {
       "name": "getClientNetworkLogs",
-      "description": "List Client Info",
+      "description": "InstaMsg Client libraries also push network information to the InstaMsg server. Network logs are very important to troubleshoot IoT device sites that have a poor network.",
       "args": [
         {
           "name": "accessToken",
