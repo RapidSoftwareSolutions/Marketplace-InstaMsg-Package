@@ -73,7 +73,7 @@
         }
     },
     "getClients": {
-        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients",
+        "url": "https://api.instamsg.io/api/v1/clients?type=device",
         "method": "GET",
         "args": {
             "String|accessToken": "$!accessToken",

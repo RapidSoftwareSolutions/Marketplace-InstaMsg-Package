@@ -37,12 +37,10 @@ Creates a Single Tenant.
 
 ## InstaMsg.getTenants
 List all Tenants
-
+""
 | Field          | Type   | Description
 |----------------|--------|----------
 | accessToken    | String | OAuth2 Access Token from `getAccessToken` method.
-| sortBy         | String | Possible values are `name`, `created_at`, `updated_at`
-| sortOrder      | String | Possible values are `asc` or `desc`. Defaults to `asc`
 | active         | Boolean| Possible values: 0, 1. Will list active or inactive tenants. If the filter is omitted it will return both active and inactive tenants.
 
 ## InstaMsg.getSingleTenant
@@ -103,8 +101,6 @@ List all Clients
 |----------------|-------|----------
 | accessToken    | String| OAuth2 Access Token from `getAccessToken` method.
 | tenantId       | String| Tenant ID.
-| sortBy         | String| Possible values are `name`, `created_at`, `updated_at`
-| sortOrder      | String| Possible values are `asc` or `desc`. Defaults to `asc`
 | type           | String| Will list client of type `user` or `device`. If the filter is omitted it will return both type of clients.
 | secure         | Number| Possible values: `0`, `1`. Will list secure or unsecure clients. If the filter is omitted it will return both secure and insecure clients
 | state          | String| Possible values: `all`, `online`, `offline`, `blocked`, `provisioned`, `unprovisioned`.
@@ -177,8 +173,6 @@ List Client Info
 | accessToken    | String| OAuth2 Access Token from `getAccessToken` method.
 | tenantId       | String| Tenant ID.
 | clientId       | String| Client ID.
-| sortBy         | String| Possible values are `time`
-| sortOrder      | String| Possible values are `asc` or `desc`. Defaults to `asc`
 | start          | Number| The start date time (in unix-time in milliseconds)
 | end            | Number| The end date time (in unix-time in milliseconds)
 | macId          | String| Hexified-MAC-Id of the network interface.
@@ -194,8 +188,6 @@ You can get the client session details using the Client Sessions API.
 | accessToken    | String| OAuth2 Access Token from `getAccessToken` method.
 | tenantId       | String| Tenant ID.
 | clientId       | String| Client ID.
-| sortBy         | String| Possible values are `connect_time`, `disconnect_time`
-| sortOrder      | String| Possible values are `asc` or `desc`. Defaults to `asc`
 | start          | Number| The start date time, (in unix-time in milliseconds)
 | end            | Number| The end date time, (in unix-time in milliseconds)
 

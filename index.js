@@ -61,6 +61,8 @@ for(let func in control) {
                 token: req.body.args['accessToken']
             }).request(options);
 
+            console.log(result)
+
             r.callback            = 'success';
             r.contextWrites['to'] = lib.success(result);
         } catch(e) {

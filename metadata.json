@@ -109,7 +109,7 @@
           "name": "maxMessages",
           "type": "Number",
           "info": "Max no of messages, which can be send by all clients of this tenant. This can be used to prevent abuse of messages by a tenant. Example from your purchase 1 million messages and you want to allot 10000 messages to this Tenant.",
-          "required": false
+          "required": true
         }
       ],
       "callbacks": [
@@ -132,18 +132,6 @@
           "type": "String",
           "info": "OAuth2 Access Token from `getAccessToken` method.",
           "required": true
-        },
-        {
-          "name": "sortBy",
-          "type": "String",
-          "info": "Possible values are `name`, `created_at`, `updated_at`",
-          "required": false
-        },
-        {
-          "name": "sortOrder",
-          "type": "String",
-          "info": "Possible values are `asc` or `desc`. Defaults to `asc`",
-          "required": false
         },
         {
           "name": "active",
@@ -404,36 +392,6 @@
           "type": "String",
           "info": "Tenant ID.",
           "required": true
-        },
-        {
-          "name": "sortBy",
-          "type": "String",
-          "info": "Possible values are `name`, `created_at`, `updated_at`",
-          "required": false
-        },
-        {
-          "name": "sortOrder",
-          "type": "String",
-          "info": "Possible values are `asc` or `desc`. Defaults to `asc`",
-          "required": false
-        },
-        {
-          "name": "type",
-          "type": "String",
-          "info": "Will list client of type `user` or `device`. If the filter is omitted it will return both type of clients.",
-          "required": false
-        },
-        {
-          "name": "secure",
-          "type": "Number",
-          "info": "Possible values: `0`, `1`. Will list secure or unsecure clients. If the filter is omitted it will return both secure and insecure clients",
-          "required": false
-        },
-        {
-          "name": "state",
-          "type": "String",
-          "info": "Possible values: `all`, `online`, `offline`, `blocked`, `provisioned`, `unprovisioned`.",
-          "required": false
         }
       ],
       "callbacks": [
@@ -730,18 +688,6 @@
           "required": true
         },
         {
-          "name": "sortBy",
-          "type": "String",
-          "info": "Possible values are `time`",
-          "required": false
-        },
-        {
-          "name": "sortOrder",
-          "type": "String",
-          "info": "Possible values are `asc` or `desc`. Defaults to `asc`",
-          "required": false
-        },
-        {
           "name": "start",
           "type": "Number",
           "info": "The start date time (in unix-time in milliseconds)",
@@ -810,18 +756,6 @@
           "type": "String",
           "info": "Client ID.",
           "required": true
-        },
-        {
-          "name": "sortBy",
-          "type": "String",
-          "info": "Possible values are `connect_time`, `disconnect_time`",
-          "required": false
-        },
-        {
-          "name": "sortOrder",
-          "type": "String",
-          "info": "Possible values are `asc` or `desc`. Defaults to `asc`",
-          "required": false
         },
         {
           "name": "start",
