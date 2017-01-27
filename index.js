@@ -64,7 +64,6 @@ for(let func in control) {
             r.callback            = 'success';
             r.contextWrites['to'] = lib.success(result);
         } catch(e) {
-            console.log(e);
             r.callback            = 'error';
             r.contextWrites['to'] = lib.error(e);
         }
