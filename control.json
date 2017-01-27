@@ -218,11 +218,11 @@
         }
     },
     "getFiles": {
-        "url": "https://api.instamsg.io/api/v1/clients/:clientId/files",
+        "url": "https://api.instamsg.io/api/v1/tenants/:tenantId/clients/:clientId/files",
         "method": "GET",
         "args": {
             "String|accessToken": "$!accessToken",
-            "String|tenantId": "$tenantId",
+            "String|tenantId": "$!tenantId",
             "String|clientId": "$!clientId"
         }
     },
