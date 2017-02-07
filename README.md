@@ -1,3 +1,5 @@
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/InstaMsg/functions?utm_source=RapidAPIGitHub_InstaMsgFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
 # InstaMsg Package
 InstaMsg is a real time messaging and connectivity platform for Internet of Things.
 * Credentials: clientKey, clientSecret
