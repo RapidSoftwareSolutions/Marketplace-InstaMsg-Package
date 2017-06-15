@@ -9,6 +9,15 @@ InstaMsg is a real time messaging and connectivity platform for Internet of Thin
 2. Create your App
 3. Obtain a client key and client secret
 
+## Custom datatypes:
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]```
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+
 ## Warn
 To be able to use **publishMessage** block, you should:
 1. When you create client with **createClient** block, provide value to `pubTopics` field. For example: 
@@ -92,11 +101,11 @@ Create a Client
 |------------------|--------|----------
 | accessToken      | String | OAuth2 Access Token from `getAccessToken` method.
 | tenantId         | String | Tenant ID.
-| type             | String | The Client type. Takes any of the two values - `device` or `user`. `device` represents a IoT device client, and `user` represents a user client.
+| type             | Select | The Client type. Takes any of the two values - `device` or `user`. `device` represents a IoT device client, and `user` represents a user client.
 | name             | String | Name of the tenant. For example, `Company 1`
 | description      | String | A short description of the Client.
-| subTopics        | Array  | Array of sub topics to which the Client can subscribe.
-| pubTopics        | Array  | Array of pub topics to which the Client can publish messages to.
+| subTopics        | List  | Array of sub topics to which the Client can subscribe.
+| pubTopics        | List  | Array of pub topics to which the Client can publish messages to.
 | secureCertEnabled| Boolean| Will client-certificate-authentication take place when client connects to server. Can take values `true` or `false`.
 | provisioningId   | String | Usually IMEI-Number for GPRS devices; MAC-ID for LAN and Wifi devices. But this can be any globally unique alpha-numeric string. For example, the device's UUID/Serial-Number.
 | provisioningKey  | String | An alphanumeric (0-9 and A-Z) key of length greater than 5 and less than 13. The key is case sensitive, therefore `KEY01` and `key01` are two different keys.
@@ -129,9 +138,7 @@ List all Clients
 |----------------|-------|----------
 | accessToken    | String| OAuth2 Access Token from `getAccessToken` method.
 | tenantId       | String| Tenant ID.
-| type           | String| Will list client of type `user` or `device`. If the filter is omitted it will return both type of clients.
-| secure         | Number| Possible values: `0`, `1`. Will list secure or unsecure clients. If the filter is omitted it will return both secure and insecure clients
-| state          | String| Possible values: `all`, `online`, `offline`, `blocked`, `provisioned`, `unprovisioned`.
+
 
 ## InstaMsg.getSingleClient
 View a Client
@@ -150,11 +157,11 @@ Update a Client
 | accessToken      | String | OAuth2 Access Token from `getAccessToken` method.
 | tenantId         | String | Tenant ID.
 | clientId         | String | Client ID.
-| type             | String | The Client type. Takes any of the two values - `device` or `user`. `device` represents a IoT device client, and `user` represents a user client.
+| type             | Select | The Client type. Takes any of the two values - `device` or `user`. `device` represents a IoT device client, and `user` represents a user client.
 | name             | String | Name of the tenant. For example, `Company 1`
 | description      | String | A short description of the Client.
-| subTopics        | Array  | Array of sub topics to which the Client can subscribe.
-| pubTopics        | Array  | Array of sub topics to which the Client can publish messages to.
+| subTopics        | List  | Array of sub topics to which the Client can subscribe.
+| pubTopics        | List  | Array of sub topics to which the Client can publish messages to.
 | secureCertEnabled| Boolean| Will client-certificate-authentication take place when client connects to server. Can take values `true` or `false`.
 | provisioningId   | String | Usually IMEI-Number for GPRS devices; MAC-ID for LAN and Wifi devices. But this can be any globally unique alpha-numeric string. For example, the device's UUID/Serial-Number.
 | provisioningKey  | String | An alphanumeric (0-9 and A-Z) key of length greater than 5 and less than 13. The key is case sensitive, therefore `KEY01` and `key01` are two different keys.
@@ -215,8 +222,8 @@ InstaMsg Client libraries also push network information to the InstaMsg server. 
 | accessToken    | String| OAuth2 Access Token from `getAccessToken` method.
 | tenantId       | String| Tenant ID.
 | clientId       | String| Client ID.
-| start          | Number| The start date time (in unix-time in milliseconds)
-| end            | Number| The end date time (in unix-time in milliseconds)
+| start          | DatePicker| The start date time
+| end            | DatePicker| The end date time
 | macId          | String| Hexified-MAC-Id of the network interface.
 | imei           | String| The imei of the network interface.
 | msisdn         | String| The mobile phone number if the device has multiple sim cards.
@@ -230,8 +237,8 @@ You can get the client session details using the Client Sessions API.
 | accessToken    | String| OAuth2 Access Token from `getAccessToken` method.
 | tenantId       | String| Tenant ID.
 | clientId       | String| Client ID.
-| start          | Number| The start date time, (in unix-time in milliseconds)
-| end            | Number| The end date time, (in unix-time in milliseconds)
+| start          | DatePicker| The start date time.
+| end            | DatePicker| The end date time.
 
 ## InstaMsg.getClientMetrics
 List Client Metrics
@@ -251,8 +258,8 @@ Client Logs are important to if you want to know what is happening at the client
 | accessToken    | String| OAuth2 Access Token from `getAccessToken` method.
 | tenantId       | String| Tenant ID.
 | clientId       | String| Client ID.
-| start          | Number| The start date time (in unix-time in milliseconds)
-| end            | String| The end date time (in unix-time in milliseconds)
+| start          | DatePicker| The start date time.
+| end            | DatePicker| The end date time.
 | level          | String| Level of logs `DEBUG` , `INFO`, `WARN`, `ERROR`, `FATAL`.
 | creator        | String| The creator of the logs. It can have two valid values `InstaMsg` and `client`.
 
@@ -350,7 +357,7 @@ Publish A Message
 | tenantId       | String | Tenant id.
 | clientId       | String | Client ID.
 | id             | String | The Message ID is a 16-bit unsigned integer that must be unique among the set of `in flight` messages in a particular direction of communication with a client. On your server side code you should maintain an map of client id, message id and reply handler or callback. When you receive a reply for a message. Set it to `null` for QOS 0 messages.
-| type           | String | The message type. Values can be `pub`, `p2p`. To publish a message set it to `pub`.
+| type           | Select | The message type. Values can be `pub`, `p2p`. To publish a message set it to `pub`.
 | topic          | String | Topic string can be any valid UTF-8 string of length limited to 64k. Topic string are case sensitive. So `TOPIC` and `topic` are two different topic. 
 | payload        | String | This is a UTF-8 encoded string. If your message contains characters not represented in UTF-8 encode your message in base64 or hex.
 | qos            | Number | This is the Quality of Service (QOS) level for message delivery. Valid values are: `1`: AT MOST ONCE; `2`: AT LEAST ONCE; `3`: EXACTLY ONCE
@@ -365,6 +372,6 @@ You can list all messages exchanged by a client.
 | accessToken    | String| OAuth2 Access Token from `getAccessToken` method.
 | tenantId       | String| Tenant ID.
 | clientId       | String| Client ID.
-| start          | Number| The start date time.
-| end            | Number| The end date time.
-| type           | String| The message type. Takes any of the two values `pub` or `p2p`.
+| start          | DatePicker| The start date time.
+| end            | DatePicker| The end date time.
+| type           | Select| The message type. Takes any of the two values `pub` or `p2p`.

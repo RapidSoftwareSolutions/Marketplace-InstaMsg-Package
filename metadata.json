@@ -277,7 +277,8 @@
         },
         {
           "name": "type",
-          "type": "String",
+          "type": "Select",
+          "options": ["device", "user"],
           "info": "The Client type. Takes any of the two values - `device` or `user`. `device` represents a IoT device client, and `user` represents a user client.",
           "required": true
         },
@@ -295,15 +296,25 @@
         },
         {
           "name": "subTopics",
-          "type": "Array",
-          "info": "Array of sub topics to which the Client can subscribe.",
-          "required": false
+          "type": "List",
+          "info": "List of sub topics to which the Client can subscribe.",
+          "required": false,
+          "structure": {
+            "name": "subTopic",
+            "type": "String",
+            "info": "Sub topic."
+          }
         },
         {
           "name": "pubTopics",
-          "type": "Array",
-          "info": "Array of pub topics to which the Client can publish messages to.",
-          "required": false
+          "type": "List",
+          "info": "List of pub topics to which the Client can publish messages to.",
+          "required": false,
+          "structure": {
+            "name": "pubTopic",
+            "type": "String",
+            "info": "Pub topic."
+          }
         },
         {
           "name": "secureCertEnabled",
@@ -463,7 +474,8 @@
         },
         {
           "name": "type",
-          "type": "String",
+          "type": "Select",
+          "options": ["device", "user"],
           "info": "The Client type. Takes any of the two values - `device` or `user`. `device` represents a IoT device client, and `user` represents a user client.",
           "required": false
         },
@@ -481,15 +493,25 @@
         },
         {
           "name": "subTopics",
-          "type": "Array",
-          "info": "Array of sub topics to which the Client can subscribe.",
-          "required": false
+          "type": "List",
+          "info": "List of sub topics to which the Client can subscribe.",
+          "required": false,
+          "structure": {
+            "name": "subTopic",
+            "type": "String",
+            "info": "Sub topic."
+          }
         },
         {
           "name": "pubTopics",
-          "type": "Array",
-          "info": "Array of sub topics to which the Client can publish messages to.",
-          "required": false
+          "type": "List",
+          "info": "List of pub topics to which the Client can publish messages to.",
+          "required": false,
+          "structure": {
+            "name": "pubTopic",
+            "type": "String",
+            "info": "Pub topic."
+          }
         },
         {
           "name": "secureCertEnabled",
@@ -689,13 +711,13 @@
         },
         {
           "name": "start",
-          "type": "Number",
+          "type": "DatePicker",
           "info": "The start date time (in unix-time in milliseconds)",
           "required": false
         },
         {
           "name": "end",
-          "type": "Number",
+          "type": "DatePicker",
           "info": "The end date time (in unix-time in milliseconds)",
           "required": false
         },
@@ -759,13 +781,13 @@
         },
         {
           "name": "start",
-          "type": "Number",
+          "type": "DatePicker",
           "info": "The start date time, (in unix-time in milliseconds)",
           "required": false
         },
         {
           "name": "end",
-          "type": "Number",
+          "type": "DatePicker",
           "info": "The end date time, (in unix-time in milliseconds)",
           "required": false
         }
@@ -845,25 +867,27 @@
         },
         {
           "name": "start",
-          "type": "Number",
+          "type": "DatePicker",
           "info": "The start date time (in unix-time in milliseconds)",
           "required": false
         },
         {
           "name": "end",
-          "type": "String",
+          "type": "DatePicker",
           "info": "The end date time (in unix-time in milliseconds)",
           "required": false
         },
         {
           "name": "level",
-          "type": "String",
+          "type": "Select",
+          "options": ["DEBUG","INFO","WARN","ERROR","FATAL"],
           "info": "Level of logs `DEBUG` , `INFO`, `WARN`, `ERROR`, `FATAL`.",
           "required": false
         },
         {
           "name": "creator",
-          "type": "String",
+          "type": "Select",
+          "options": ["InstaMsg","client"],
           "info": "The creator of the logs. It can have two valid values `InstaMsg` and `client`.",
           "required": false
         }
@@ -1199,7 +1223,8 @@
         },
         {
           "name": "type",
-          "type": "String",
+          "type": "Select",
+          "options": ["pub", "p2p"],
           "info": "The message type. Values can be `pub`, `p2p`. To publish a message set it to `pub`.",
           "required": true
         },
@@ -1217,7 +1242,8 @@
         },
         {
           "name": "qos",
-          "type": "Number",
+          "type": "Select",
+          "options": ["1","2","3"],
           "info": "This is the Quality of Service (QOS) level for message delivery. Valid values are: `1`: AT MOST ONCE; `2`: AT LEAST ONCE; `3`: EXACTLY ONCE",
           "required": true
         },
@@ -1269,19 +1295,20 @@
         },
         {
           "name": "start",
-          "type": "Number",
+          "type": "DatePicker",
           "info": "The start date time.",
           "required": false
         },
         {
           "name": "end",
-          "type": "Number",
+          "type": "DatePicker",
           "info": "The end date time.",
           "required": false
         },
         {
           "name": "type",
-          "type": "String",
+          "type": "Select",
+          "options": ["pub", "p2p"],
           "info": "The message type. Takes any of the two values `pub` or `p2p`.",
           "required": false
         }

@@ -11,6 +11,7 @@ const express       = require('express'),
 const PORT          = process.env.PORT || 8080;
 const API           = lib.init();
 const app           = express();
+var datetime = require('node-datetime');
 
 let mfile = fs.readFileSync('./metadata.json', 'utf-8'),
     cfile = fs.readFileSync('./control.json',  'utf-8');
@@ -45,6 +46,16 @@ for(let func in control) {
         };
 
         req.body.args = lib.clearArgs(req.body.args);
+
+        if(req.body.args.start!=undefined){
+            let date = datetime.create(req.body.args.start);
+            req.body.args.start = date.epoch();
+        }
+
+        if(req.body.args.end!=undefined){
+            let date = datetime.create(req.body.args.end);
+            req.body.args.end = date.epoch();
+        }
 
         try {
             for(let arg in args) {
