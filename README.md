@@ -5,7 +5,7 @@ InstaMsg is a real time messaging and connectivity platform for Internet of Thin
 * Credentials: clientKey, clientSecret
 
 ## How to get credentials: 
-1. [Log onto your InstaMsg](https://platform.instamsg.io) account.
+1. [Log onto your InstaMsg](https://platform.instamsg.io) account
 2. Create your [App](https://platform.instamsg.io/#/apps)
 3. Obtain a Api Key and Api Secret
 
