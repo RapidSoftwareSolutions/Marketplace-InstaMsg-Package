@@ -14,6 +14,11 @@
       "clientSecret"
     ]
   },
+  "steps": [
+    "Log onto your InstaMsg account (https://platform.instamsg.io/)",
+    "Create your App (https://platform.instamsg.io/#/apps)",
+    "Obtain a Api Key and Api Secret"
+  ],
   "blocks": [
     {
       "name": "getAccessToken",
